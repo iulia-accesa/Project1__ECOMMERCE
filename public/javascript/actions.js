@@ -3,6 +3,12 @@ const PRODUCT_DETAIL_PAGE_URL = `http://localhost:${currentRunningOnPort}/produc
 class ActionsInitializator {
   constructor() {}
 
+  // TODO: use a sigle click handler attached to the body of the document andd then check clicked target properties (like class name or tag name) to determine the actions
+  // This way you do not have to reatache handlers once products are insterted in the page
+  // document.addEventListener('click', (evt) => {
+  //    if (evt.target.tagName === 'button') { this.handleClickOnButton() }
+  //    else if (evt.target.tagName === 'a') { this.handleClickOnLink() }
+  // }, false);
   initAllActions() {
     this.initProductBoxActions();
     this.initProductListPageActions();
@@ -134,6 +140,7 @@ class ActionsInitializator {
       }
 
 
+    // TODO: use CSS breakpoint to hide / show / rearange elements in page
     searchOutlineIcon.addEventListener('click',function(event){
       
         const searchBar = document.querySelector('.products__search-bar');
@@ -147,6 +154,9 @@ class ActionsInitializator {
         
     });
 
+    // TODO: scroll events are triggered a huge ammount of times while scrolling a page si is not a good practice to do this
+    // also there is no reason to do this since you are looking at the current width of the viewport and it does not change on scroll event
+    // Solution: use CSS breakpoint to hide / show / rearange elements in page 
     window.addEventListener('scroll',function(event){
       const searchBar = document.querySelector('.products__search-bar');
       let currentWidth = window.innerWidth;
@@ -157,6 +167,8 @@ class ActionsInitializator {
     }
 
     )
+
+    // TODO: use CSS breakpoint to hide / show / rearange elements in page  
     window.addEventListener('resize',function(event){
       const searchBar = document.querySelector('.products__search-bar');
       let currentWidth = window.innerWidth;
