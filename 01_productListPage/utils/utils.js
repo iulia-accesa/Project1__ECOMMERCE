@@ -10,6 +10,8 @@ class ProductsController {
         allProducts.push(element);
       });
     });
+
+    // move this to axios callback or load the product list sync from directly JSON file
     this._products = allProducts;
     this._products = this.oderByPrice('asc');
   }
@@ -28,23 +30,28 @@ class ProductsController {
    */
   oderByPrice(order) {
     console.log("in OrderBy price"+order)
-    let ordered;
-    if (order === 'asc') {
-      ordered = this._products.sort(priceAscendingComparator);
-    } else {
-      if (order === 'desc') {
-        ordered = this._products.sort(priceDescendingComparator);
-      }
-    }
 
-    function priceAscendingComparator(item1, item2) {
-      return item1.price - item2.price;
-    }
-    function priceDescendingComparator(item1, item2) {
-      return item2.price - item1.price;
-    }
+    // Simplified version :)
+    const orderDirection = order === 'desc' ? -1 : 1;
+    return this._products.sort((a, b) => (a.price - b.price) * orderDirection );
 
-    return ordered;
+    // let ordered;
+    // if (order === 'asc') {
+    //   ordered = this._products.sort(priceAscendingComparator);
+    // } else {
+    //   if (order === 'desc') {
+    //     ordered = this._products.sort(priceDescendingComparator);
+    //   }
+    // }
+
+    // function priceAscendingComparator(item1, item2) {
+    //   return item1.price - item2.price;
+    // }
+    // function priceDescendingComparator(item1, item2) {
+    //   return item2.price - item1.price;
+    // }
+
+    // return ordered;
   }
 
    /**
@@ -54,6 +61,9 @@ class ProductsController {
    * @return {list} filtered list of json objects by title
    */
   filterByTitle(title,productList){
+      // TODO: do not create a const ... simply return productList.filter(...)
+      // also product list is available in this._products
+      // also product might need to be sorted after filtering (according to sort criteria)
       const result = productList.filter(jsonObj => jsonObj.title.toLowerCase().includes(title))
       return result;
   }
