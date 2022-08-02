@@ -126,12 +126,11 @@ div[data-product-in-cart="true"]:hover  .remove-from-cart{
 }
 
 #container__products-page{
+
 display: grid;
-grid-template-columns: 1fr 1fr 1fr;
-grid-template-rows : 1fr 1fr 1fr;
-justify-content: center;
-align-content: center;
-grid-gap: 3rem 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+
 margin-top: 9rem;
 margin-right: 0;
 }
@@ -284,5 +283,14 @@ height: 2rem;
       
       .offer{
         font-size: 1px;
+      }
+      .product__box--buttons-container{
+          margin-left: 15rem;
+      }
+      #container__products-page{
+        margin-left: 10%;
+        margin-right: 100px;
+        grid-template-columns: repeat(2, 0.4fr);
+        gap: 3rem;
       }
   }

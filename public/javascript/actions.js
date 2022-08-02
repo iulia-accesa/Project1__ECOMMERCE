@@ -161,7 +161,10 @@ class ActionsInitializator {
       const searchBar = document.querySelector('.products__search-bar');
       let currentWidth = window.innerWidth;
       if(currentWidth > 1300)
-      searchBar.style.display = 'grid';
+        searchBar.style.display = 'grid';
+        if(currentWidth <= 1300){
+          searchBar.style.display = 'none'
+        }
     })
 
 
