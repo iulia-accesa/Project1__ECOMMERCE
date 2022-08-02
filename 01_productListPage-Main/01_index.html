@@ -1,0 +1,74 @@
+<!--Btns remove and add to cart id starts with : btns_${nr}-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <title>Products list page</title>
+  </head>
+  <body>
+    <header class="sticky">
+      <div class="products__search-bar-container sticky">
+        <img
+          class="header__shop-logo"
+          src="./images/logo.png"
+          href="shop logo"
+        />
+        <input
+          id="search-bar-products-title"
+          class="products__search-bar"
+          type="text"
+          value="Search here"
+        />
+        <div class="products__search-outline--container">
+          <img
+            class="products__search-outline"
+            src="./images/search-outline.svg"
+            alt="search outline search products"
+          />
+        </div>
+        <div class="container__cart-logo">
+          <img
+            class="header__cart-symbol"
+            src="./images/cart.png"
+            alt="cart symbol go to cart"
+          />
+        </div>
+      </div>
+    </header>
+
+    <section id="beforeProductsSection">
+      <h1 id="sorting-option" data-now-sorting="asc">Sort by</h1>
+      <img
+        class="down__arrow"
+        src="./images/down-arrow.svg"
+        alt="down arrow order products by price ascending descending"
+      />
+
+      <div class="dropdown__options hidden">
+        <h6 class="order__option" data-sort="asc">Ascending price</h6>
+        <h6 class="order__option" data-sort="desc">Descending price</h6>
+      </div>
+    </section>
+    <br /><br /><br /><br /><br /><br /><br />
+    <section id="container__products-page"></section>
+  </body>
+
+  <script>
+    axios.get("http://localhost:3000/products").then((response) => {
+      console.log(response);
+      const htmlString = response.data;
+      document
+        .getElementById("container__products-page")
+        .insertAdjacentHTML("beforeend", htmlString);
+    });
+  </script>
+  <script src="./javascript/actions.js"></script>
+  <script src="./javascript/main.js"></script>
+</html>

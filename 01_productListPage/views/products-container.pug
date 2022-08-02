@@ -1,0 +1,18 @@
+each product,i in products
+    div(id='product_'+product.id  class = 'product__box' data-product-in-cart='false')
+        img.product__box--image(src='./images/girl-jacket-blue.png' alt=product.description)
+        section.product__box--details
+            h1(class= 'product__box-title') #{product.title}
+            section.product__box--brand-rating
+                h4(class='product__box-description' style='font-weight: normal') #{product.brand}
+                div.product__box--rating-cell
+                    p(data-rating='4.4' style='color: #848484;') #{product.rating}
+                    img(src='./images/star-rating.png' alt='star for rating')
+            br
+        section.product__box--pricing
+            h2(data-price=product.price) Rs. #{product.price}
+            p.before-discount(data-price-before-discount=product.price + product.discountPercentage*product.price/100) Rs. #{product.price + product.discountPercentage*product.price/100}
+            p.offer(data-discount=product.discountPercentage) (#{product.discountPercentage}% off) 
+        section(id=`btns_`+product.id    class = 'product__box--buttons-container')
+            button.button.add-to-cart Add To Cart
+            button.button.remove-from-cart Remove From Cart
