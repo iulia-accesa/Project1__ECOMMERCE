@@ -163,7 +163,7 @@ class ActionsInitializator {
       if(currentWidth > 1300)
         searchBar.style.display = 'grid';
         if(currentWidth <= 1300){
-          searchBar.style.display = 'none'
+          searchBar.style.display = 'none';
         }
     })
 
