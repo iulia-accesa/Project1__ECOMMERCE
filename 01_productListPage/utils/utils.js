@@ -57,7 +57,8 @@ class ProductsController {
       In my  view this.__products should keep only the products list without any filters
 
       
-      Please,let me what do you think i am a bit confused about it now:)
+      Please,let me what do you think 
+      :)
       */
       return productList.filter(jsonObj => jsonObj.title.toLowerCase().includes(title))
      
