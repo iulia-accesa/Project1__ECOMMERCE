@@ -1,14 +1,9 @@
-const currentRunningOnPort = 8080;
-const PRODUCT_DETAIL_PAGE_URL = `http://localhost:${currentRunningOnPort}/products`;
+const PORT = 8080;
+const PRODUCT_DETAIL_PAGE_URL = `http://localhost:${PORT}/products`;
 class ActionsInitializator {
   constructor() {}
 
-  // TODO: use a sigle click handler attached to the body of the document andd then check clicked target properties (like class name or tag name) to determine the actions
-  // This way you do not have to reatache handlers once products are insterted in the page
-  // document.addEventListener('click', (evt) => {
-  //    if (evt.target.tagName === 'button') { this.handleClickOnButton() }
-  //    else if (evt.target.tagName === 'a') { this.handleClickOnLink() }
-  // }, false);
+  
   initAllActions() {
     
     document.addEventListener('click', (event) => {
@@ -78,7 +73,7 @@ class ActionsInitializator {
       const title = document
         .getElementById("search-bar-products-title")
         .value.toLowerCase();
-      let GET_PRODUCTS_ORDERED_BY = "http://localhost:3000/products";
+      let GET_PRODUCTS_ORDERED_BY = `http://localhost:${PORT}/products`;
 
       if (order === "asc") {
         GET_PRODUCTS_ORDERED_BY += "?order=asc";
@@ -123,7 +118,7 @@ class ActionsInitializator {
         .getAttribute("data-now-sorting");
       const title = input.value.toLowerCase();
       const GET_PRODUCTS_FILTER_ORDER_BY =
-        "http://localhost:3000/products" +
+        `http://localhost:${PORT}/products` +
         "?" +
         "order=" +
         sortingOption +

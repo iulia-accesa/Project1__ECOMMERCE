@@ -2,35 +2,14 @@ const path = require('path');
 const express = require('express');
 const router = express.Router();
 const productController = require('./../utils/utils.js');
-var fs = require('fs');
-var data = fs.readFileSync('./../products.json');
-var elements = JSON.parse(data);
 
 
-
-router.get('/json', function(req, res, next) {
-  res.send(elements);
-  });
 
 router.get('/', function(req, res, next) {
     let order = req.query.order;
     let title = req.query.title;
-    let productsToRender = [];
-    console.log(title)
-    if(order){
-       
-            productController.oderByPrice(order)
-            .forEach(elem => productsToRender.push(elem))
-          
-    }else{
-       productController.getAll()
-                        .forEach(elem => productsToRender.push(elem))   
-    }
-
-    if(title){
-      productsToRender = productController.filterByTitle(title,productsToRender);
-    }
-
+    let productsToRender = productController.orderByPriceFilterByTitle(order,title);
+    console.log(productController.orderByPriceFilterByTitle(order,title));
 
     res.render('products-container', {
       products: productsToRender

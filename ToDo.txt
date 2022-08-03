@@ -1,5 +1,5 @@
 
-
+--user navigation could be improved
 -pentru mobile se poate imbunatati responsive desgin
 
 --change pictures link url ,nu recunoaste daca am vpn -ul pornit si sunt la birou

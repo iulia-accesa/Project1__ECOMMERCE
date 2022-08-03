@@ -1,27 +1,24 @@
 const axios = require("axios");
+const { all } = require("../routes");
 const port = 8080;
+
 class ProductsController {
   _products;
 
   constructor() {
-    
-    let allProducts = [];
-    axios.get(`http://localhost:${port}/products/json`).then((response) => {
-      const responseProducts = response.data.products;
-      responseProducts.forEach((element) => {
-        allProducts.push(element);
-      });
-    });
-    //QUESTION: In the set-up and guidelines i says:When importing the json file, you must treat that as a http request and use the fetch method.
-    //I thought that we have to threat this as an actual http get request , what should i do then? 
+    let fs = require("fs");
+    let data = fs.readFileSync("./../products.json");
 
-    // move this to axios callback or load the product list sync from directly JSON file
-    this._products = allProducts;
-    this._products = this.oderByPrice('asc');
+    this._products = [];
+    JSON.parse(data).products.forEach((product) =>
+      this._products.push(product)
+    );
+    this._products = this.oderByPrice("asc");
   }
 
   getAll() {
-    return this._products;
+    
+    return all;
   }
 
   setProducts(newProducts) {
@@ -33,35 +30,44 @@ class ProductsController {
    * @return {list} sorted list of json objects by price
    */
   oderByPrice(order) {
-   
-    const orderDirection = order === 'desc' ? -1 : 1;
-    return this._products.sort((a, b) => (a.price - b.price) * orderDirection );
+    console.log(this._products[0]);
+    const orderDirection = order === "desc" ? -1 : 1;
+    // this._products = this._products.sort((a, b) => (a.price - b.price) * orderDirection);
+    return this;
   }
 
-   /**
+  /**
    *
    * @param title {string}
    * @param productList {JSONObjList}
    * @return {list} filtered list of json objects by title
    */
-  filterByTitle(title,productList){
-      // TODO: 
-      // also product list is available in this._products
-      // also product might need to be sorted after filtering (according to sort criteria)
+  filterByTitle(title) {
+    this._products =  this._products.filter((jsonObj) =>
+      jsonObj.title.toLowerCase().includes(title)
+    );
+    return this;
+  }
+  /**
+   *
+   * @param {string} order `asc` or `desc` only
+   * @param {string} title
+   * @return {list} filtered by title and sorted  by order list of json objects if title and order is not undefined
+   *                ,ordered `asc` and filtered by title if order is undefined
+   *                ,ordered by order if only @param order is defined
+   *                ,else return  list sorted by attribute `price` ascending 
+   * 
+   */
+  orderByPriceFilterByTitle(order, title) {
 
-      //QUESTION regarding the to-dos
-      /*
-      * Yes,indeed the product list is available in this._products but i did not want to use it because i did not wanted to make this function depend on that list( i thought about doing
-      this too to the `orderPyPrice` function but i ecountered a problem there and i could not do it)
-      Also,i want to try  make this class functions respect the  single responsability principle 
-      
-      In my  view this.__products should keep only the products list without any filters
-
-      
-      Please,let me what do you think :)
-      */
-      return productList.filter(jsonObj => jsonObj.title.toLowerCase().includes(title))
-     
+    if (order && !title) {
+      return this.oderByPrice(order);
+    } else if (!order && title) {
+      return this.filterByTitle(title).oderByPrice('asc');
+    } else if (order && title) {
+      return this._products.filterByTitle(title).oderByPrice(order);
+    }
+    return this.oderByPrice('asc');
   }
 }
 
