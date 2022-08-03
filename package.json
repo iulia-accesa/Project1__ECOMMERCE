@@ -1,8 +1,11 @@
 {
   "dependencies": {
+    "axios": "^0.27.2",
     "express": "^4.18.1",
     "http-server": "^14.1.1",
-    "node-fetch": "^3.2.9"
+    "jade": "^1.11.0",
+    "node-fetch": "^3.2.9",
+    "pug": "^3.0.2"
   },
   "name": "project1__ecommerce",
   "version": "1.0.0",

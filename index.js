@@ -1,22 +1,19 @@
-const express = require('express')
-const app = express()
-const port = 8080
 const path = require('path');
+const express = require('express')
+const port = 8080
+
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+const myIndexRouter = require('./routes/index');
+const productsRouter = require('./routes/products');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.get('/', (req, res) => {
-    res.send('welcome to my webserver ');
-})
+app.use('/', myIndexRouter);
+app.use('/products', productsRouter);
 
-app.get('/products', (req, res) => {
-    res.sendFile(path.join(__dirname, '/01_productListPage-Main/01_index.html'));
-})
-
-app.get('/products/:id', (req, res) => {
-  let productId = req.params['id'];
-  console.log(productId);
-  res.sendFile(path.join(__dirname, '/02_productDetailPage/02_index.html'));
-})
 
 
 app.listen(port, () => {
