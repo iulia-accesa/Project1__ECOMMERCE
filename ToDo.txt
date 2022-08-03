@@ -1,0 +1,11 @@
+
+
+-pentru mobile se poate imbunatati responsive desgin
+
+--change pictures link url ,nu recunoaste daca am vpn -ul pornit si sunt la birou
+--use media queries for resizing text in product__box when it's too big
+
+-smoother transition on mouseout mouseover events
+-tell the meaning of grid-template-columns: 1fr 1fr 1fr;
+grid-template-rows : 1fr 1fr 1fr;
+-understand the comparator 

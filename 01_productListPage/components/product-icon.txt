@@ -1,0 +1,33 @@
+<div class="product__box" id="product-id">
+      <img
+        src="./images/girl-jacket-blue.png"
+        alt="product image description"
+        class="product__box--image"
+      />
+      <section class="product__box--details">
+        <h1>Product description</h1>
+        <section class = "product__box--brand-rating">
+          <h4 style="font-weight: normal">Brand Name</h4>
+            <div class="product__box--rating-cell">
+                <p data-rating = "4.4" style="color: #848484;">4.4</p>
+                <img src = "./images/star-rating.png" alt="star for rating">
+            </div>
+        </section>
+        <br>
+        <section class="product__box--pricing">
+            <h2 data-price = "700">Rs. 7000</h2>
+            <p class = "before-discount" data-price-before-discount = "1000">Rs. 1000</p>
+            <p class = "offer" data-discount = 30>(30% off) </p>
+        </section>
+        <section class="product__box--buttons-container">
+            <button class="button add-to-cart hidden">Add To Cart</button>
+            <button class="button remove-from-cart hidden">Remove From Cart</button>
+            
+        </section>
+
+
+
+      </section>
+
+
+    </div>

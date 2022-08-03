@@ -1,0 +1,22 @@
+extends layout 
+block content__products  
+  body
+    each product,i in products
+        div(id=product.id  class = 'product__box')
+            img.product__box--image(src='/images/girl-jacket-blue.png' alt=product.description)
+            section.product__box--details
+                h1 #{product.title}
+                section.product__box--brand-rating
+                h4(style='font-weight: normal') #{product.brand}
+                .product__box--rating-cell
+                    p(data-rating='4.4' style='color: #848484;') #{product.rating}
+                    img(src='/images/star-rating.png' alt='star for rating')
+                br
+            section.product__box--pricing
+                h2(data-price='700') Rs. #{product.price}
+                p.before-discount(data-price-before-discount='1000') Rs. #{product.price + product.discountPercentage*product.price/100}
+                p.offer(data-discount='30') (#{product.discountPercentage}% off) 
+                section.product__box--buttons-container
+                    button.button.add-to-cart.hidden Add To Cart
+                    button.button.remove-from-cart.hidden Remove From Cart
+    
