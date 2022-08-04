@@ -32,7 +32,7 @@ class ProductsController {
   /**
    *
    *
-   * @return {ProductsController} where this.__products is a  sorted list of json objects by price
+   * @return {ProductsController} in where this.__products is a  sorted list of json objects by price
    */
   oderByPrice(order) {
     
@@ -44,7 +44,7 @@ class ProductsController {
    *
    * @param title {string}
    * @param productList {JSONObjList}
-   * @return {ProductsController} where this.__products is a filtered list of json objects by title
+   * @return {ProductsController} in where this.__products is a filtered list of json objects by title
    */
   filterByTitle(title) {
     return new ProductsController(this._products.filter((jsonObj) =>
@@ -55,7 +55,7 @@ class ProductsController {
    *
    * @param {string} order `asc` or `desc` only
    * @param {string} title
-   * @return {ProductsController} where attribute this.__products is filtered by title and sorted  by order list of json objects if title and order is not undefined
+   * @return {ProductsController} in where attribute this.__products is filtered by title and sorted  by order list of json objects if title and order is not undefined
    *                ,ordered `asc` and filtered by title if order is undefined
    *                ,ordered by order if only @param order is defined
    *                ,else return  list sorted by attribute `price` ascending 
