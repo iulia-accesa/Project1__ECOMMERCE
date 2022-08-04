@@ -2,14 +2,15 @@ const path = require('path');
 const express = require('express');
 const router = express.Router();
 const productController = require('./../utils/utils.js');
-
-
+productController.fetchProducts();
 
 router.get('/', function(req, res, next) {
     let order = req.query.order;
     let title = req.query.title;
-    let productsToRender = productController.orderByPriceFilterByTitle(order,title);
-    console.log(productController.orderByPriceFilterByTitle(order,title));
+    
+  
+    let productsToRender = productController.orderByPriceFilterByTitle(order,title).getAll();
+    
 
     res.render('products-container', {
       products: productsToRender
