@@ -20,15 +20,17 @@ html {
   }
 
   footer{
-    margin-top: 20px;
+     
+     bottom:0;
     background-color: #223263;
     display: flex;
-    width: 100%;
+    width: 97.5%;
     height: 10rem;
     font-family: 'Times New Roman', Times, serif;
     color: white;
     font-size: large;
     padding: 2rem;
+   
   }
   .container__social-media-icons{
     display: flex;
@@ -261,8 +263,13 @@ height: 2rem;
   }
 
   .container__product-details{
+    display: flex;
+    
     background-color: #F5F5F5;
     margin-top: 10rem;
+    height:1390px;
+    
+ 
   }
 .container__images--vertical{
   display: flex;
@@ -280,19 +287,90 @@ height: 2rem;
 }
 .img__main-image{
   height:59rem ;
-  width:66rem;
+  width:68rem;
   border-radius: 1rem;
 }
 .container__main-image{
  margin-left: 0;
+ margin-right: 0;
  height: 74rem;
 }
 .container__product-images{
   display: flex;
  padding: 0;
+ margin-left: 0;
+ margin-right: 0;
  
  
 }
+.container__product-description{
+ 
+  width: 40%;
+  margin-right:0;
+  margin-left:6rem;
+  padding: 1rem;
+  
+  line-height: 6.5rem;
+}
+.footer--sticky{
+  position: fixed;
+    top: 10rem  ;
+  width: 40%;
+  
+}
+
+.container__product-description p{
+  font-size: 2.5rem;
+}
+.container__product-description > p:nth-of-type(2){
+  font-size: 3.5rem;
+}
+
+.container__product-description > p:nth-of-type(1){
+  font-size: 6rem;
+}
+.container__descripton--small{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+.container__descripton--small p {
+  line-height: 3.5rem;
+  font-size: 2.5rem;
+}
+.container__product-details .product__box--pricing{
+  padding: 0;
+  font-size: 2rem;
+}
+
+.btns__product--details{
+  color: white;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
+  border: none;
+  height: 50px;
+  width: 200px;
+  border-radius: 1rem;
+}
+.btn__add-to-cart{
+  background-color: #002482;
+  display: none;
+}
+.btn__remove-from-cart{
+  background-color: rgb(197, 132, 40);
+  display: none;
+}
+
+.container__product-details[data-product-in-cart='false'] .btn__add-to-cart{
+display: inline-block;
+}
+
+.container__product-details[data-product-in-cart='true'] .btn__remove-from-cart{
+  display: inline-block;
+  }
+
+
+
   @media only screen and (max-width: 1300px) and (min-width: 320px)  {
     .products__search-bar{
       
