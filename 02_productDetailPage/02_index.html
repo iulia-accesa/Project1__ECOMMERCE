@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles/styles.css" />
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>Details page</title>
   </head>
   <body>
@@ -28,7 +28,7 @@
       </div>
     </header>
     
-    <section class="container__product-details" data-product-in-cart="false">
+    <!-- <section class="container__product-details" data-product-in-cart="false" data-product-id="product_">
       <div class="container__product-images">
         <div class="container__images--vertical">
           <img
@@ -93,7 +93,9 @@
         <button class="btns__product--details btn__remove-from-cart">Remove From Cart</button>
         
       </div>
-    </section>
+    </section> -->
+
+    <div id="container__product"></div>
 
     <footer>
       
@@ -106,4 +108,5 @@
       </div>
     </footer>
   </body>
+  <script src="./javascript/actions-2.js"></script>
 </html>

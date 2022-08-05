@@ -1,5 +1,5 @@
 each product,i in products
-    div(id='product_'+product.id  class = 'product__box' data-product-in-cart='false')
+    div(id='product_'+product.id  class = 'product__box' data-product-in-cart=''+productsCart.includes(product.id))
         img.product__box--image(src='./images/girl-jacket-blue.png' alt=product.description)
         section.product__box--details
             h1(class= 'product__box-title') #{product.title}

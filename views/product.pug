@@ -1,0 +1,29 @@
+section(class= 'container__product-details' data-product-in-cart='' + inCart data-product-id='product_'+product.id)
+  .container__product-images
+    .container__images--vertical
+      img.img__product--vertical(src=product.images[0] alt=product.title)
+      img.img__product--vertical(src=product.images[1] alt=product.title)
+      img.img__product--vertical(src=product.images[2] alt=product.title)
+      img.img__product--vertical(src=product.images[3] alt=product.title)
+      img.img__product--vertical(src=product.images[4] alt=product.title)
+    .container__main-image
+      img.img__main-image(src=product.thumbnail alt=product.description)
+  .container__product-description
+    p #{product.title}
+    p #{product.brand}
+    p #{product.category}
+    p Sold by: #{product.seller}
+    .container__descripton--small
+      p Description:
+      p #{product.description}
+    p Stock:12
+    .container__stars--rating(data-product-rating = Math.round(product.rating))
+      .container__img--stars
+      p #{product.rating}
+    section.product__box--pricing
+      h2(data-price=product.price) #{product.price}
+      p.before-discount(data-price-before-discount=product.price + product.discountPercentage*product.price/100) Rs. #{product.price + product.discountPercentage*product.price/100}
+      p.offer(data-discount=product.discountPercentage) (#{product.discountPercentage}% off) 
+    br
+    button.btns__product--details.btn__add-to-cart Add To Cart
+    button.btns__product--details.btn__remove-from-cart Remove From Cart

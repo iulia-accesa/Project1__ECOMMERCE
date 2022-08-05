@@ -9,3 +9,16 @@
 -tell the meaning of grid-template-columns: 1fr 1fr 1fr;
 grid-template-rows : 1fr 1fr 1fr;
 -understand the comparator 
+
+
+
+
+
+  
+    // fetch(CHECK_IF_PRODUCT_IS_IN_CART + '/' + productId)
+    // .then((response) => response.json)
+    // .then( (data) => {return data.isInCart;})
+    // .catch( (error) =>  console.error(error));
+
+
+----rating stars could be improved

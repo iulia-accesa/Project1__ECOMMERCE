@@ -1,6 +1,3 @@
-const axios = require("axios");
-const { all } = require("../routes");
-const port = 8080;
 
 class ProductsController {
   _products;
@@ -60,16 +57,6 @@ class ProductsController {
    *                ,ordered `asc` and filtered by title if order is undefined
    *                ,ordered by order if only @param order is defined
    *                ,else return  list sorted by attribute `price` ascending 
-   * TO DO: ASK about how to do something like this ex: 
-   * const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present']; 
-   * function filtera(){
-	      return this.filter(word => word.length > 6);
-        }
-
-          function filterb(){
-	          return this.filter(word => word.length < 9);
-          }
-      return words.filtera().filterb();  //selects words wit length betwen 7 and 8
    */
   orderByPriceFilterByTitle(order, title) {
     if (order && !title) {
@@ -80,6 +67,12 @@ class ProductsController {
       return this.filterByTitle(title).oderByPrice(order);
     }
     return this.oderByPrice("asc");
+  }
+
+
+  findById(id){
+  
+    return this._products.find(product => product.id === Number(id));
   }
 }
 

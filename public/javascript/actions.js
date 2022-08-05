@@ -1,5 +1,6 @@
 const PORT = 8080;
-const PRODUCT_DETAIL_PAGE_URL = `http://localhost:${PORT}/products`;
+const PRODUCT_DETAIL_PAGE_URL = `http://localhost:${PORT}/product-details`;
+const post_MANIPULATE_CART = `http://localhost:${PORT}/cart/manip`;
 class ActionsInitializator {
   constructor() {}
 
@@ -18,7 +19,32 @@ class ActionsInitializator {
     this.initSearchBarActions();
   }
 
+
+  manipulateCartProducts(_action,_productId){
+        //http request
+        const data = { action : _action,
+                      productId : _productId
+                    };
+        fetch(post_MANIPULATE_CART,{
+          method : 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        })
+        .then((response) => {
+            console.log('Success:', response);
+          })
+          .catch((error) => {
+              console.error('Error:', error);
+            });
+        
+  } 
+
+
   handleProductBoxButtonsClicked(event) {
+    const productContainer = event.target.closest('.product__box');
+    const productId = productContainer.getAttribute('id').split('_')[1];
     console.log(event.target);
     if (event.target.classList.contains('button')) {
       const cartBtnsContainer = event.target.closest(
@@ -29,16 +55,21 @@ class ActionsInitializator {
         'data-product-in-cart'
       );
       if (isAddedToCart === 'false') {
+        
         productContainer.setAttribute('data-product-in-cart', 'true');
+        //request for cart controller to add to cart
+        this.manipulateCartProducts('add',productId);
       } else {
         if (isAddedToCart === 'true') {
           productContainer.setAttribute('data-product-in-cart', 'false');
+           //request for cart controller to remove from cart
+           this.manipulateCartProducts('remove',productId);
         }
       }
     } else if (event.target.classList.contains('product__box--image')) {
-      const productContainer = event.target.closest('.product__box');
-      const productId = productContainer.getAttribute('id').split('_')[1];
-      location.replace(PRODUCT_DETAIL_PAGE_URL + '/' + productId);
+     
+      sessionStorage.setItem('productId',productId);
+      location.replace(PRODUCT_DETAIL_PAGE_URL);
     }
   }
 
