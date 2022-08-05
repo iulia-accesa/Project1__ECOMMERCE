@@ -10,8 +10,8 @@ section(class= 'container__product-details' data-product-in-cart='' + inCart dat
       img.img__main-image(src=product.thumbnail alt=product.description)
   .container__product-description
     p #{product.title}
-    p #{product.brand}
-    p #{product.category}
+    p Brand: #{product.brand}
+    p Category: #{product.category}
     p Sold by: #{product.seller}
     .container__descripton--small
       p Description:

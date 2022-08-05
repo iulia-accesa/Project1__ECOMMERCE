@@ -1,12 +1,12 @@
 each product,i in products
-    div(id='product_'+product.id  class = 'product__box' data-product-in-cart=''+productsCart.includes(product.id))
+    div(id='product_'+product.id  class = 'product__box' data-product-in-cart=''+productsCart.includes(product.id) data-product-category = product.category)
         img.product__box--image(src='./images/girl-jacket-blue.png' alt=product.description)
         section.product__box--details
             h1(class= 'product__box-title') #{product.title}
             section.product__box--brand-rating
                 h4(class='product__box-description' style='font-weight: normal') #{product.brand}
                 div.product__box--rating-cell
-                    p(data-rating='4.4' style='color: #848484;') #{product.rating}
+                    p(data-rating = product.rating style='color: #848484;') #{product.rating}
                     img(src='./images/star-rating.png' alt='star for rating')
             br
         section.product__box--pricing

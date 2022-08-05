@@ -67,8 +67,9 @@ class ActionsInitializator {
         }
       }
     } else if (event.target.classList.contains('product__box--image')) {
-     
+      const productBox = productContainer.getAttribute('data-product-category');
       sessionStorage.setItem('productId',productId);
+      sessionStorage.setItem('productCategory',productBox);
       location.replace(PRODUCT_DETAIL_PAGE_URL);
     }
   }

@@ -49,6 +49,16 @@ class ProductsController {
       )
     );
   }
+
+ filterByCategory(category){
+    return new ProductsController(
+      this._products.filter((jsonObj) =>
+        jsonObj.category.toLowerCase().includes(category)
+      )
+    );
+  }
+
+
   /**
    *
    * @param {string} order `asc` or `desc` only

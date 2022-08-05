@@ -260,6 +260,7 @@ height: 2rem;
     margin-left: 1rem;
     margin-right: 3rem;
     width: 5rem;
+   
   }
 
   .container__product-details{
@@ -267,7 +268,7 @@ height: 2rem;
     
     background-color: #F5F5F5;
     margin-top: 10rem;
-    height:1390px;
+    height:800px;
     
  
   }
@@ -388,7 +389,64 @@ display: inline-block;
     font-size:3rem;
   }
 
- 
+  .img--stars{
+    height: 100px;
+  }
+
+  .container__img--stars{
+    background: url('../images/all-stars.PNG') 1px -5px no-repeat;
+    width: 244px;
+    height: 44px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .container__stars--rating[data-product-rating~='1'] .container__img--stars{
+    background: url('../images/all-stars.PNG') 1px -185px no-repeat;
+   
+  }
+  .container__stars--rating[data-product-rating~='2'] .container__img--stars{
+    background: url('../images/all-stars.PNG') 1px -140px no-repeat;
+   
+  }
+  .container__stars--rating[data-product-rating~='3'] .container__img--stars{
+    background: url('../images/all-stars.PNG') 1px -95px no-repeat;
+   
+  }
+
+  .container__stars--rating[data-product-rating~='4'] .container__img--stars{
+    background: url('../images/all-stars.PNG') 1px -50px no-repeat;
+   
+  }
+
+  .container__stars--rating[data-product-rating~='5'] .container__img--stars{
+    background: url('../images/all-stars.PNG') 1px -5px no-repeat;
+   
+  }
+
+  .section__similar-products{
+    display: block;
+    font-size: 30px;
+    margin-top: 0;
+    height: 1300px;
+    
+  }
+
+  .section__similar-products h1{
+    margin-left: 4rem;
+  }
+
+  .container__similar-products{
+    display: flex;
+  }
+
+  .header__cart-symbol--phones{
+    width: 2.7rem;
+    height: 2.3rem;
+    position: absolute;
+    margin-top: 0.4rem;
+    display: none;
+  }
 
   @media only screen and (max-width: 1300px) and (min-width: 320px)  {
     .products__search-bar{
@@ -443,46 +501,44 @@ display: inline-block;
       }
       #container__products-page{
         margin-left: 10%;
-        margin-right: 100px;
+        margin-right: 10rem;
         grid-template-columns: repeat(2, 0.4fr);
         gap: 3rem;
       }
    
-   
+
+      
+      .header__cart-symbol{
+        display: none;
+      }
+      .section__similar-products{
+        display: none;
+      }
+
+      .header__cart-symbol--phones{
+        display: grid;
+      }
+
+      .container__product-details{
+        flex-direction: column;
+      }
+
+      .btns__product--details{
+        position: absolute;
+        margin-left: 83rem;
+        margin-top: -148rem;
+        
+      }
+      .container__product-details{
+        margin-top: 15rem;
+        background-color: white;
+      }
+      body{
+        background-color: white;
+      }
   }
 
 
-  .img--stars{
-    height: 100px;
-  }
 
-  .container__img--stars{
-    background: url('../images/all-stars.PNG') 1px -5px no-repeat;
-    width: 244px;
-    height: 44px;
-    margin-left: 0;
-    margin-right: 0;
-  }
+  
 
-  .container__stars--rating[data-product-rating~='1'] .container__img--stars{
-    background: url('../images/all-stars.PNG') 1px -185px no-repeat;
-   
-  }
-  .container__stars--rating[data-product-rating~='2'] .container__img--stars{
-    background: url('../images/all-stars.PNG') 1px -140px no-repeat;
-   
-  }
-  .container__stars--rating[data-product-rating~='3'] .container__img--stars{
-    background: url('../images/all-stars.PNG') 1px -95px no-repeat;
-   
-  }
-
-  .container__stars--rating[data-product-rating~='4'] .container__img--stars{
-    background: url('../images/all-stars.PNG') 1px -50px no-repeat;
-   
-  }
-
-  .container__stars--rating[data-product-rating~='5'] .container__img--stars{
-    background: url('../images/all-stars.PNG') 1px -5px no-repeat;
-   
-  }

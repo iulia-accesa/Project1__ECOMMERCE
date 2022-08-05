@@ -1,15 +1,22 @@
-
-
-
 const PORT = 8080;
 const get_PRODUCT_DETAIL_PAGE = `http://localhost:${PORT}/products`;
+const get_FEW_PRODUCTS_BY_TITLE = `http://localhost:${PORT}/products/similar/5`;
 const CHECKOUT_PAGE = `http://localhost:${PORT}/checkout`;
 function init(){
     const productId = sessionStorage.getItem('productId');
+    const productCategory = sessionStorage.getItem('productCategory');
     axios.get(get_PRODUCT_DETAIL_PAGE + '/' + productId)
     .then(response => response.data)
     .then(htmlString => {
+       
         document.getElementById('container__product').insertAdjacentHTML('beforeend',htmlString);
+        axios.get(get_FEW_PRODUCTS_BY_TITLE + '?cat=' + productCategory)
+        .then(response_1 => response_1.data)
+        .then(htmlString_1 => {
+                document.querySelector('.container__similar-products').insertAdjacentHTML('beforeend',htmlString_1);
+        });
+    
+    
     })
     
 }

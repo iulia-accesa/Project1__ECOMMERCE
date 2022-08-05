@@ -8,7 +8,7 @@ const productController = require("./../utils/utils.js");
 const axios = require('axios');
 productController.fetchProducts();
 const CHECK_IF_PRODUCT_IS_IN_CART = `http://localhost:${PORT}/cart`;
-const get_ALL_CART_PRODUCTS = `http://localhost:${PORT}/cart/get/all`;
+const get_ALL_CART_PRODUCTS = `http://localhost:${PORT}/cart/cart/all`;
 router.get("/", function (req, res, next) {
 
 
@@ -50,7 +50,7 @@ async function isInCart(productId) {
 router.get("/:id", (req, res) => {
   let productId = req.params["id"];
   isInCart(productId).then((response) => 
-    {console.log(response);
+    {
       res.render("product",{ 
         product: productController.findById(productId),
         inCart:response});
@@ -60,5 +60,22 @@ router.get("/:id", (req, res) => {
 });
 
 
+router.get('/similar/5',(req,res) => {
+
+  let category = req.query.cat;
+  const sliceFiveProducts = productController.filterByCategory(category).getAll().slice(0,5);
+  axios.get(get_ALL_CART_PRODUCTS)
+  .then(response => response.data.cart)
+  .then((cart) => {
+    
+      const arrOfNumbers = cart.map(str => Number(str));
+      res.render("products-container", {
+    products: sliceFiveProducts,
+    productsCart : arrOfNumbers
+  });
+  })
+  .catch(error => console.error(error));
+  
+})
 
 module.exports = router;
