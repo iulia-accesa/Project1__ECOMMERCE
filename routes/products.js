@@ -8,7 +8,7 @@ const productController = require("./../utils/utils.js");
 const axios = require('axios');
 productController.fetchProducts();
 const CHECK_IF_PRODUCT_IS_IN_CART = `http://localhost:${PORT}/cart`;
-const get_ALL_CART_PRODUCTS = `http://localhost:${PORT}/cart/cart/all`;
+const GET_ALL_CART_PRODUCTS = `http://localhost:${PORT}/cart/products/all`;
 router.get("/", function (req, res, next) {
 
 
@@ -21,7 +21,7 @@ router.get("/", function (req, res, next) {
     .getAll();
  
  
-  axios.get(get_ALL_CART_PRODUCTS)
+  axios.get(GET_ALL_CART_PRODUCTS)
   .then(response => response.data.cart)
   .then((cart) => {
       const arrOfNumbers = cart.map(str => Number(str));
@@ -64,7 +64,7 @@ router.get('/similar/5',(req,res) => {
 
   let category = req.query.cat;
   const sliceFiveProducts = productController.filterByCategory(category).getAll().slice(0,5);
-  axios.get(get_ALL_CART_PRODUCTS)
+  axios.get(GET_ALL_CART_PRODUCTS)
   .then(response => response.data.cart)
   .then((cart) => {
     
@@ -80,17 +80,24 @@ router.get('/similar/5',(req,res) => {
 
 
 //response returns multiple products given their id's in the body of the request
-router.post('/multiple',(req,res) => {
+router.post('/in-cart',(req,res) => {
     let productsIdList = req.body.productsId;
-    let result = [];
+    let _products = [];
+    let _totalProductsCost = 0;
     productsIdList.forEach(id => {
-      result.push(productController.findById(id));
+      let product = productController.findById(id);
+      _products.push(product);
+      _totalProductsCost += product.price;
     })
-    res.status(200).send(
-      {
-        products: result
-      }
-    );
+    let result = pug.renderFile('views/product-box-cart.pug',{
+      products: _products
+    });
+    res.status(200).send({
+      htmlString: result,
+      totalProductsCost : _totalProductsCost
+    })
+    
+   
 });
 
 module.exports = router;

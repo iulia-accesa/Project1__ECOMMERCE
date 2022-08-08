@@ -24,7 +24,7 @@ router.post('/manip',(req,res) => {
     
 })
 
-router.get('/cart/all',(req,res) => {
+router.get('/products/all',(req,res) => {
     const _cart = [];
     cartController.getAll().forEach(elem => _cart.push(elem));
     res.send({
