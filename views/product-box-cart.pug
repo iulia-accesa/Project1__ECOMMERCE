@@ -3,8 +3,8 @@ each product,i in products
         .container__product-img--cart
             img(src = product.thumbnail)
         .container__product-details--cart
-            h4 #{product.title}
+            h3 #{product.title}
             section.product__box--pricing
-                h2(data-price = product.price) #{product.price}
+                h2(data-price = product.price) Rs. #{product.price}
                 p.before-discount(data-price-before-discount = product.price + product.discountPercentage*product.price/100) Rs. #{product.price + product.discountPercentage*product.price/100}
                 p.offer(data-discount = product.discountPercentage) (#{product.discountPercentage}% off) 
