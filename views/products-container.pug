@@ -1,6 +1,6 @@
 each product,i in products
     div(id='product_'+product.id  class = 'product__box' data-product-in-cart=''+productsCart.includes(product.id) data-product-category = product.category)
-        img.product__box--image(src='./images/girl-jacket-blue.png' alt=product.description)
+        img.product__box--image(src = product.thumbnail alt=product.description)
         section.product__box--details
             h1(class= 'product__box-title') #{product.title}
             section.product__box--brand-rating

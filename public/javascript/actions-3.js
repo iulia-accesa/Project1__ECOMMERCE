@@ -3,6 +3,12 @@
 const PORT = 8080;
 const GET_ALL_CART_PRODUCTS = `http://localhost:${PORT}/cart/products/all`;
 const POST_CART_PRODUCTS = `http://localhost:${PORT}/products/in-cart`;
+
+
+
+
+
+
 function init() {
   const cartSection = document.querySelector(".container__cart-products--checkout");
 
@@ -22,6 +28,12 @@ function init() {
         .catch((error) => console.error(error));
     })
     .catch((error) => console.error(error));
+
+
+  
 }
+
+
+
 
 init();

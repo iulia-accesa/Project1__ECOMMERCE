@@ -4,6 +4,40 @@ const FEW_PRODUCTS_BY_TITLE = `http://localhost:${PORT}/products/similar/5`;
 const CHECKOUT_PAGE = `http://localhost:${PORT}/checkout`;
 const MANIPULATE_CART = `http://localhost:${PORT}/cart/manip`;
 
+
+function handleProductBoxButtonsClicked(event) {
+  const productContainer = event.target.closest('.product__box');
+  const productId = productContainer.getAttribute('id').split('_')[1];
+  console.log(event.target);
+  if (event.target.classList.contains('button')) {
+    const cartBtnsContainer = event.target.closest(
+      '.product__box--buttons-container'
+    );
+    const productContainer = event.target.closest('.product__box');
+    const isAddedToCart = productContainer.getAttribute(
+      'data-product-in-cart'
+    );
+    if (isAddedToCart === 'false') {
+      
+      productContainer.setAttribute('data-product-in-cart', 'true');
+      //request for cart controller to add to cart
+      this.manipulateCartProducts('add',productId);
+    } else {
+      if (isAddedToCart === 'true') {
+        productContainer.setAttribute('data-product-in-cart', 'false');
+         //request for cart controller to remove from cart
+         this.manipulateCartProducts('remove',productId);
+      }
+    }
+  } else if (event.target.classList.contains('product__box--image')) {
+    const productBox = productContainer.getAttribute('data-product-category');
+    sessionStorage.setItem('productId',productId);
+    sessionStorage.setItem('productCategory',productBox);
+    location.replace(PRODUCT_DETAIL_PAGE_URL);
+  }
+}
+
+
 function init() {
   const productId = sessionStorage.getItem("productId");
   const productCategory = sessionStorage.getItem("productCategory");
@@ -22,6 +56,12 @@ function init() {
             .querySelector(".container__similar-products")
             .insertAdjacentHTML("beforeend", htmlString_1);
         });
+    });
+
+    document.addEventListener('click', (event) => {
+      if(event.target.closest('.product__box') !== null){
+        handleProductBoxButtonsClicked(event);
+      }
     });
 }
 
