@@ -24,7 +24,7 @@ html {
   }
 
   footer{
-     
+      position: absolute;
      bottom:0;
     background-color: #223263;
     display: flex;
@@ -34,7 +34,19 @@ html {
     color: white;
     font-size: large;
     padding: 2rem;
+    
    
+    
+ 
+    height: 2.5rem; 
+  }
+  #page-container {
+    position: relative;
+    min-height: 100vh;
+  }
+  
+  #content-wrap {
+    padding-bottom: 2.5rem;    /* Footer height */
   }
   .container__social-media-icons{
     display: flex;
@@ -540,6 +552,7 @@ display: inline-block;
       body{
         background-color: white;
       }
+      
   }
   .container__cart-products--checkout{
     display: flex;
