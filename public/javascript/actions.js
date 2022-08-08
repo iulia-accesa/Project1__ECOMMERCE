@@ -1,6 +1,6 @@
 const PORT = 8080;
 const PRODUCT_DETAIL_PAGE_URL = `http://localhost:${PORT}/product-details`;
-const post_MANIPULATE_CART = `http://localhost:${PORT}/cart/manip`;
+const MANIPULATE_CART = `http://localhost:${PORT}/cart/manip`;
 class ActionsInitializator {
   constructor() {}
 
@@ -25,7 +25,7 @@ class ActionsInitializator {
         const data = { action : _action,
                       productId : _productId
                     };
-        fetch(post_MANIPULATE_CART,{
+        fetch(MANIPULATE_CART,{
           method : 'POST',
           headers: {
             'Content-Type': 'application/json',

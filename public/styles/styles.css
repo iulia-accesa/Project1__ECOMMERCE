@@ -553,9 +553,10 @@ display: inline-block;
   }
   .container__product--cart{
     margin-top: 4rem;
-    /* margin-left: 1rem;  0 10rem 0 40rem*/
+   
     margin : 0 auto;
     margin-left: 0;
+ 
     
   }
   .container__product-img--cart{
