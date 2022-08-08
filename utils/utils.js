@@ -84,6 +84,8 @@ class ProductsController {
   
     return this._products.find(product => product.id === Number(id));
   }
+
+  
 }
 
 module.exports = new ProductsController([]);

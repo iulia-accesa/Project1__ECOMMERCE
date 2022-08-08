@@ -78,4 +78,19 @@ router.get('/similar/5',(req,res) => {
   
 })
 
+
+//response returns multiple products given their id's in the body of the request
+router.post('/multiple',(req,res) => {
+    let productsIdList = req.body.productsId;
+    let result = [];
+    productsIdList.forEach(id => {
+      result.push(productController.findById(id));
+    })
+    res.status(200).send(
+      {
+        products: result
+      }
+    );
+});
+
 module.exports = router;

@@ -4,9 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout</title>
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Cart checkout</title>
 </head>
 <body>
         <h1>Welcome checkout</h1>
+
+        <section class="container__cart-products--all">
+
+        </section>
+
+
+        <section class="container__product--cart">
+                <div class="container__product-img--cart">
+                   <img src="/images/girl-jacket-blue.png">
+                </div>
+
+                <div class="container__product-details--cart">
+                        <h4>Product description</h4>
+                        <section class="product__box--pricing" >
+                            <h2 data-price = "700">Rs. 7000</h2>
+                            <p class = "before-discount" data-price-before-discount = "1000">Rs. 1000</p>
+                            <p class = "offer" data-discount = 30>(30% off) </p>
+                          </section>
+                </div>
+
+        </section>
 </body>
 </html>
